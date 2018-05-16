@@ -24,11 +24,14 @@ let indeciesToRemove = [1, 2, 2, 3];
 
 // [2, 9, 4, 2]
 
-
+let numberOfRolls=0
 function runGame () {
+	
 	//let firstArray = [4, 6, 8, 10, 12, 20];
 
 	let originalRolls = rollDice(remainingDice);
+	numberOfRolls=numberOfRolls+1;
+	console.log('roll', numberOfRolls);
 	console.log('You rolled:', originalRolls);
 	let stageOne = getToNextSet (originalRolls);
 	/* console.log('stageOne', stageOne);
@@ -57,14 +60,22 @@ function getToNextSet(firstRoundOutcomes){
 				let match = firstRoundOutcomes.splice(j, 1);
 				match = firstRoundOutcomes.splice(i, 1);
 				console.log(match, 'is a match');
-				console.log('your non-matches', firstRoundOutcomes, 'Click "Roll for round two!"');
+				
+				//console.log('your non-matches', firstRoundOutcomes, 'Click "Roll!" again');
 				
 			}	
 		}	
 	}
+	if (firstRoundOutcomes != 0){
+		console.log('your non-matches', firstRoundOutcomes);
+	}
 	
-	console.log('Available Dice', remainingDice);
-	
+	if (remainingDice !=0){
+	console.log('Available Dice', remainingDice, 'Click "Roll!" again');
+	}
+	else {
+	console.log('GAME COMPLETE! It took you' + ' ' + numberOfRolls + ' ' + 'rolls!')
+	}	
 	//console.log(firstRoundOutcomes);
 	return firstRoundOutcomes;	
 }
